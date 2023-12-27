@@ -1,13 +1,19 @@
-// index.js
 import fetch from "node-fetch";
 import readline from "readline";
 import fs from "fs";
+import express from "express";
+import { marked } from "marked";
 import PromptAgent from "./modules/prompt-agent.js";
 
+const app = express();
+const port = 3000;
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
+
+// Configurar express para servir archivos estáticos del directorio 'public'
+app.use(express.static("public"));
 
 async function getTranscription({ videoUrl, langCode }) {
   const response = await fetch(
@@ -33,18 +39,12 @@ async function main() {
       langCode: "es",
     });
 
-    // Verificando la respuesta de la transcripción
     console.log("Transcripción inicial obtenida.");
-    console.log("transcription", transcriptionResponse);
-    console.log("transcription keys", Object.keys(transcriptionResponse));
-
-    // Concatenar todos los textos de los captions
     const fullTranscription = transcriptionResponse.captions
       .map(caption => caption.text)
       .join(" ");
 
     console.log("Transcripción completa creada.");
-
     const promptAgent = new PromptAgent(process.env.OPENAI_API_KEY);
     console.log("Mejorando transcripción con GPT-4...");
     const improvedTranscription = await promptAgent.improveTranscription({
@@ -52,10 +52,30 @@ async function main() {
     });
 
     console.log("Transcripción optimizada.");
-    fs.writeFileSync("transcripcion_mejorada.md", improvedTranscription);
+    const improvedTranscriptionMarkdown = `# Transcripción Mejorada\n\n${improvedTranscription}`;
+    fs.writeFileSync(
+      "transcripcion_mejorada.md",
+      improvedTranscriptionMarkdown
+    );
     console.log("Transcripción guardada en 'transcripcion_mejorada.md'");
 
+    // Iniciar el servidor para mostrar la transcripción
+    startServer(improvedTranscriptionMarkdown);
+
     rl.close();
+  });
+}
+
+function startServer(markdownContent) {
+  app.get("/", (req, res) => {
+    const htmlContent = marked(markdownContent);
+    res.send(
+      `<html><head><title>Transcripción Mejorada</title></head><body>${htmlContent}</body></html>`
+    );
+  });
+
+  app.listen(port, () => {
+    console.log(`Servidor ejecutándose en http://localhost:${port}`);
   });
 }
 
