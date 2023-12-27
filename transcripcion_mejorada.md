@@ -1,29 +1,39 @@
 # Transcripción Mejorada
 
-# Resumen
+# Resumen Transcripción 
 
-## 1. Introducción
+La transcripción es una discusión exhaustiva que se centra en torno al funcionamiento político y las decisiones legislativas en un escenario complejo. La narración aborda varios temas interconectados e interleaved en secuencia yuxtapuestos. A continuación, se proporciona un resumen detallado del contenido de esta transcripción, dividido en secciones temáticas.
 
-El video trata sobre la importancia del estudio de los puentes de Königsberg y su relevancia para el desarrollo de software. El presentador explica de forma jocosa que suscribirse a su canal podría tener un efecto positivo en el tamaño del pene. 
+## 1. La controversia del decreto de Javier Miley 
 
-## 2. Los Puentes de Königsberg
+El primer tema principal en la transcripción gira en torno al presidente Javier Miley y su uso controversial de `Decretos de Necesidad y Urgencia (DNU)`. Miley defiende su decisión de emplear DNU's y critica a los miembros del Congreso por resistirse a sus propuestas.
 
-Königsberg (actualmente Kaliningrado), una hermosa ciudad de la antigua Prusia Oriental, era famosa por sus siete puentes y sus habitantes tenían la curiosidad de preguntarse si sería posible cruzar todos los puentes una única vez.*"resulta que en Königsberg había siete puentes y la gente de este pueblo... preguntarse...si sería posible diseñar una caminata que recorriera todos los puentes exactamente una vez"*. En un intento fallido de encontrar esta solución, los habitantes utilizaban la fuerza bruta, es decir, trataban de recorrer todos los caminos posibles hasta agotar todos los posibles o las energías de los caminantes.
+> "*Miley habló de doble vara es muy curiosa la doble vara de sobre todo de mahul en un momento majul no estaba en ese tramo le dice yo no me voy a poner a juzgar el decreto como diciendo no me corresponde a mí eh opinar si el decreto es o no constitucional*"
 
-## 3. El Problema Matemático de los Puentes
+## 2. Respeto por el constitucionalismo 
 
-Leonard Euler, quien deseaba resolver el problema de los puentes sin tener que recorrer físicamente los caminos, decidió simplificar el problema representando la tierra como nodos y los puentes como aristas. Mediante esta representación simplificada, la solución al problema de los puentes se volvió evidente: *"si entras a un nodo por una Arista necesitas otra arista para salir, si no te vas a quedar trabado y no puedes seguir explorando"*. 
+El segundo tema esencial es el conflicto percibido entre el uso de DNU's por parte de Miley y las normas de constitucionalidad. Algunos críticos argumentan que sus acciones pueden poner en peligro el equilibrio del poder y no cumplir con procedimientos legislativos aceptables.
 
-De esta forma, los únicos nodos que podían tener una única Arista eran el primer nodo y el último nodo de la secuencia. Euler concluyó que un recorrido que cruzara todos los puentes una sola vez sería posible solo si todos los nodos, excepto el primero y el último, tuvieran un número par de aristas.
+> "*Y entonces el poder ejecutivo se atribuye la posibilidad de vía decreto resolver cuestiones que debería mandar al congreso*"
 
-Para ilustrar, decidió asignar un número a cada nodo representando la cantidad de aristas que éste tenía (grado de un nodo). Observó que Königsberg tenía varios nodos con un grado ímpar, por lo que finalmente no era posible encontrar un camino que cruzara cada puente una sola vez.
+## 3. Lucha contra la corrupción 
 
-Finalmente, Euler separó los grafos en dos tipos principales: aquellos con todos los nodos, excepto los dos extremos, de grado par, que se denominan caminos eulerianos, y aquellos con todos los nodos de grado par, que se denominan ciclos eulerianos.
+Miley también sugiere que parte de la resistencia a su DNU nace de un intento de los legisladores de mantener la corrupción y el autoenriquecimiento. Se evidencia malestar de Miley por el modus operandi del congreso y culpa al Congreso de ralentizar su progreso.
 
-## 4. La Importancia de la Teoría de Grafos
+> "*los legisladores es porque buscan coimas también eh ojo algunos si no dije todos dije algunos pero esos que les gusta tanto la discusión y todo eso y discutir la coma y todo eso es porque están buscando coimas*"
 
-La teoría desarrollada por Euler puede aplicarse en diversas áreas, incluyendo el desarrollo de software. El presentador explica cómo la abstracción del problema de los puentes permitió la creación de una herramienta genérica para tratar con cualquier problema representable con una estructura similar a un grafo.
+## 4. Consulta popular como posible solución 
 
-Además de introducirnos a la teoría de grafos y a la importancia de pensar en la resolución de problemas desde una perspectiva abstracta, el video también menciona la plataforma online `Brilliant` como una forma efectiva y entretenida de aprender sobre ciencias de la computación y matemáticas. 
+Miley insinúa que podría recurrir a una consulta popular para sortear la oposición del Congreso a sus políticas y propuestas si no puede lograr que aprueben sus DNU's.
 
-El presenter termina el video aconsejando a su audiencia a considerar la importancia de entender y utilizar abstracto en la resolución de problemas, y no solo en la teoría de los grafos, sino en todas las formas de razonamiento lógico y matemático.
+> "*mi ley habló una consulta popular eh es difícil también que pueda imponerlo vía consulta popular porque la consulta popular*"
+
+## 5. Tratado de doble imposición con Luxemburgo 
+
+El último tema destacado está relacionado con un polémico tratado fiscal con Luxemburgo. La narradora cuestiona la lógica detrás de la asociación y sugiere que Luxemburgo puede ser un paraíso fiscal.
+
+> "*el temario extraordinaria sobre la cual no le preguntó absolutamente nada a Luis mahul que tiene que ver con el tratado de doble imposición con el ducado de Luxemburgo*"
+
+## Reflexión final 
+
+La revisión completa indica que la transcripción contiene una rica discusión sobre los desafíos relacionados con las decisiones legislativas en un entorno político complejo. Puntos claves como el uso de DNU´s y el respeto por el constitucionalismo se destacan en la trama de esta transcripción junto con acusaciones de corrupción.

@@ -102,101 +102,129 @@ function splitIntoSections(markdownContent) {
 
 function startServer(htmlSections) {
   app.get("/", (req, res) => {
-    res.send(`
-        <html>
-          <head>
-            <title>Transcripción Mejorada</title>
-            <style>
-              body { 
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                margin: 0;
-                background-color: #f4f4f4;
-                color: #333;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                margin: -20px 0 50px;
-              }
-              .card {
-                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-                transition: 0.3s;
-                background-color: #fff;
-                border-radius: 5px;
-                padding: 20px;
-                margin: 20px;
-                width: 80%;
-                max-width: 700px;
-              }
-              .card:hover {
-                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-              }
-              .content {
-                margin: 15px;
-              }
-              .nav-buttons {
-                text-align: center;
-                margin-top: 20px;
-              }
-              #prev, #next {
-                cursor: pointer;
-                background-color: #e7e7e7;
-                color: black;
-                border: none;
-                padding: 10px 20px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 18px;
-                margin: 4px 2px;
-                transition-duration: 0.4s;
-                border-radius: 5px;
-                box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
-              }
-              #prev:hover, #next:hover {
-                background-color: #ddd;
-                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-              }
-            </style>
-            <script>
-              document.addEventListener('DOMContentLoaded', (event) => {
-                let currentSection = 0;
-                const sections = ${JSON.stringify(htmlSections)};
-                const contentDiv = document.getElementById('content');
-                
-                function showSection(index) {
-                  contentDiv.innerHTML = sections[index];
-                  document.getElementById('prev').style.visibility = index > 0 ? 'visible' : 'hidden';
-                  document.getElementById('next').style.visibility = index < sections.length - 1 ? 'visible' : 'hidden';
-                }
-  
-                document.getElementById('prev').addEventListener('click', () => {
-                  if (currentSection > 0) {
-                    showSection(--currentSection);
-                  }
-                });
-  
-                document.getElementById('next').addEventListener('click', () => {
-                  if (currentSection < sections.length - 1) {
-                    showSection(++currentSection);
-                  }
-                });
-  
-                showSection(currentSection);
-              });
-            </script>
-          </head>
-          <body>
-            <div class="card">
-              <div id="content" class="content"></div>
-              <div class="nav-buttons">
-                <button id="prev">← Prev</button>
-                <button id="next">Next →</button>
-              </div>
+    res.send(
+      `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Transcripción Mejorada</title>
+          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+          <style>
+            * {
+              box-sizing: border-box;
+            }
+            body { 
+              font-family: 'Roboto', sans-serif;
+              margin: 0;
+              background-color: #F7F9FB;
+              color: #333;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              min-height: 100vh;
+              padding: 40px 20px;
+            }
+            .container {
+              width: 100%;
+              max-width: 700px;
+              margin: 0 auto;
+              padding: 20px;
+              background: #FFFFFF;
+              border-radius: 8px;
+              box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+            }
+            .header {
+              width: 100%;
+              padding: 15px 20px;
+              background: #FFFFFF;
+              margin-bottom: 20px;
+              box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+              border-radius: 8px;
+              text-align: center;
+            }
+            .header h1 {
+              margin: 0;
+              font-size: 1.8rem;
+              color: #333;
+            }
+            .content {
+              margin-bottom: 20px;
+            }
+            .nav-buttons {
+              display: flex;
+              justify-content: space-between;
+              padding-top: 20px;
+            }
+            .button {
+              padding: 10px 20px;
+              background: none;
+              color: #333;
+              border: 2px solid #333;
+              border-radius: 5px;
+              font-size: 1rem;
+              cursor: pointer;
+              transition: all 0.3s ease;
+            }
+            .button:hover {
+              background: #333;
+              color: white;
+            }
+            .section-indicator {
+              font-size: 1rem;
+              color: #666;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            
+            <div id="content" class="content"></div>
+            <div class="nav-buttons">
+              <button id="prev" class="button">← Prev</button>
+              <span id="section-indicator" class="section-indicator">1/${
+                htmlSections.length
+              }</span>
+              <button id="next" class="button">Next →</button>
             </div>
-          </body>
+          </div>
+          <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+              let currentSection = 0;
+              const sections = ${JSON.stringify(htmlSections)};
+              const contentDiv = document.getElementById('content');
+              const sectionIndicator = document.getElementById('section-indicator');
+              
+              function showSection(index) {
+                contentDiv.innerHTML = sections[index];
+                sectionIndicator.textContent = ` +
+        "`${index + 1}/${sections.length}`" +
+        `;
+                document.getElementById('prev').style.visibility = index > 0 ? 'visible' : 'hidden';
+                document.getElementById('next').style.visibility = index < sections.length - 1 ? 'visible' : 'hidden';
+              }
+  
+              document.getElementById('prev').addEventListener('click', () => {
+                if (currentSection > 0) {
+                  showSection(--currentSection);
+                }
+              });
+  
+              document.getElementById('next').addEventListener('click', () => {
+                if (currentSection < sections.length - 1) {
+                  showSection(++currentSection);
+                }
+              });
+  
+              showSection(currentSection);
+            });
+          </script>
+        </body>
         </html>
-      `);
+      `
+    );
   });
 
   app.listen(port, () => {
